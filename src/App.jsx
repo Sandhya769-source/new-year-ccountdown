@@ -38,8 +38,18 @@ function App() {
 
   return (
     <div className="app">
+      {/* Animated Stars */}
+      <div className="stars">
+        {Array.from({ length: 50 }).map((_, index) => (
+          <span key={index} className="star"></span>
+        ))}
+      </div>
+
+      {/* Countdown Card */}
       <div className="countdown-container">
-        <p className="small-title">✨ THE COUNTDOWN BEGINS ✨</p>
+        <p className="small-title">
+          ✨ THE COUNTDOWN BEGINS ✨
+        </p>
 
         <h1>New Year Countdown</h1>
 
@@ -47,28 +57,38 @@ function App() {
           Get ready to welcome a brand new year!
         </p>
 
+        {/* Countdown */}
         <div className="countdown">
           <div className="time-box">
-            <span>{String(timeLeft.days).padStart(2, "0")}</span>
+            <span>
+              {String(timeLeft.days).padStart(2, "0")}
+            </span>
             <p>Days</p>
           </div>
 
           <div className="time-box">
-            <span>{String(timeLeft.hours).padStart(2, "0")}</span>
+            <span>
+              {String(timeLeft.hours).padStart(2, "0")}
+            </span>
             <p>Hours</p>
           </div>
 
           <div className="time-box">
-            <span>{String(timeLeft.minutes).padStart(2, "0")}</span>
+            <span>
+              {String(timeLeft.minutes).padStart(2, "0")}
+            </span>
             <p>Minutes</p>
           </div>
 
           <div className="time-box">
-            <span>{String(timeLeft.seconds).padStart(2, "0")}</span>
+            <span>
+              {String(timeLeft.seconds).padStart(2, "0")}
+            </span>
             <p>Seconds</p>
           </div>
         </div>
 
+        {/* Bottom Message */}
         <p className="message">
           🎆 A new year, a new beginning, a new adventure! 🎆
         </p>
