@@ -480,3 +480,92 @@ h1 {
     font-size: 15px;
   }
 }
+/* Past Year Celebration */
+
+.past-year {
+  margin-top: 20px;
+  padding: 35px 25px;
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+  animation: pastAppear 0.6s ease;
+}
+
+.past-icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.past-year h2 {
+  color: #ffffff;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.past-year p {
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.past-year strong {
+  color: #67e8f9;
+}
+
+.past-time {
+  margin: 20px 0;
+  padding: 15px;
+
+  border-radius: 12px;
+
+  color: #67e8f9;
+  background: rgba(103, 232, 249, 0.08);
+
+  font-weight: 600;
+}
+
+.past-message {
+  margin-top: 20px;
+}
+
+@keyframes pastAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .past-year {
+    padding: 25px 15px;
+  }
+
+  .past-icon {
+    font-size: 45px;
+  }
+
+  .past-year h2 {
+    font-size: 22px;
+  }
+
+  .past-year p {
+    font-size: 14px;
+  }
+
+  .past-time {
+    font-size: 13px;
+  }
+}
