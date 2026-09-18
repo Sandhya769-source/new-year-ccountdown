@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const currentYear = new Date().getFullYear();
+
+  // Target year
+  const [targetYear, setTargetYear] = useState(currentYear + 1);
+
   const calculateTimeLeft = () => {
     const now = new Date();
-    const nextYear = now.getFullYear() + 1;
 
-    const newYear = new Date(`January 1, ${nextYear} 00:00:00`);
+    const newYear = new Date(
+      `January 1, ${targetYear} 00:00:00`
+    );
+
     const difference = newYear - now;
 
     if (difference <= 0) {
@@ -19,25 +26,46 @@ function App() {
     }
 
     return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / (1000 * 60)) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
+      days: Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+      ),
+      hours: Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+      ),
+      minutes: Math.floor(
+        (difference / (1000 * 60)) % 60
+      ),
+      seconds: Math.floor(
+        (difference / 1000) % 60
+      ),
     };
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState(
+    calculateTimeLeft()
+  );
 
   useEffect(() => {
+    // Immediately update when year changes
+    setTimeLeft(calculateTimeLeft());
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [targetYear]);
+
+  // Generate future years
+  const futureYears = [];
+
+  for (let year = currentYear + 1; year <= currentYear + 20; year++) {
+    futureYears.push(year);
+  }
 
   return (
     <div className="app">
+
       {/* Animated Stars */}
       <div className="stars">
         {Array.from({ length: 50 }).map((_, index) => (
@@ -47,6 +75,7 @@ function App() {
 
       {/* Countdown Card */}
       <div className="countdown-container">
+
         <p className="small-title">
           ✨ THE COUNTDOWN BEGINS ✨
         </p>
@@ -57,8 +86,37 @@ function App() {
           Get ready to welcome a brand new year!
         </p>
 
+        {/* Year Selector */}
+        <div className="year-selector">
+
+          <label htmlFor="year">
+            Select Your New Year
+          </label>
+
+          <select
+            id="year"
+            value={targetYear}
+            onChange={(e) =>
+              setTargetYear(Number(e.target.value))
+            }
+          >
+            {futureYears.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+
+        </div>
+
+        {/* Selected Year */}
+        <div className="selected-year">
+          🎆 Countdown to {targetYear} 🎆
+        </div>
+
         {/* Countdown */}
         <div className="countdown">
+
           <div className="time-box">
             <span>
               {String(timeLeft.days).padStart(2, "0")}
@@ -86,12 +144,14 @@ function App() {
             </span>
             <p>Seconds</p>
           </div>
+
         </div>
 
         {/* Bottom Message */}
         <p className="message">
           🎆 A new year, a new beginning, a new adventure! 🎆
         </p>
+
       </div>
     </div>
   );

@@ -400,3 +400,83 @@ h1 {
     opacity: 1;
   }
 }
+/* Year Selector */
+
+.year-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.year-selector label {
+  color: #cbd5e1;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.year-selector select {
+  min-width: 130px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  outline: none;
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.year-selector select:hover {
+  border-color: #67e8f9;
+  box-shadow: 0 0 15px rgba(103, 232, 249, 0.25);
+}
+
+.year-selector select:focus {
+  border-color: #67e8f9;
+}
+
+.year-selector option {
+  background: #111827;
+  color: white;
+}
+
+/* Selected Year */
+
+.selected-year {
+  color: #67e8f9;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 25px;
+
+  text-shadow: 0 0 15px rgba(103, 232, 249, 0.4);
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .year-selector {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .year-selector label {
+    font-size: 14px;
+  }
+
+  .year-selector select {
+    width: 150px;
+  }
+
+  .selected-year {
+    font-size: 15px;
+  }
+}
