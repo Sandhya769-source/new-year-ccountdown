@@ -92,28 +92,34 @@ function App() {
           Choose any year and explore its New Year countdown.
         </p>
 
-        {/* Year Selector */}
-        <div className="year-selector">
+            <div className="year-selector">
 
-          <label htmlFor="year">
-            Select Year
-          </label>
+        <label htmlFor="year">
+          Select Year
+        </label>
 
-          <select
-            id="year"
-            value={targetYear}
-            onChange={(e) =>
-              setTargetYear(Number(e.target.value))
-            }
-          >
-            {years.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
+        <select
+          id="year"
+          value={targetYear}
+          onChange={(e) =>
+            setTargetYear(Number(e.target.value))
+          }
+        >
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
 
-        </div>
+        <button
+          className="current-year-btn"
+          onClick={() => setTargetYear(currentYear + 1)}
+        >
+          ↩ Current Year
+        </button>
+
+      </div>
 
         {/* Selected Year */}
         <div className="selected-year">
