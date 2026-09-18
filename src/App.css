@@ -130,18 +130,19 @@ h1 {
 
 .time-box span {
   display: block;
-  font-size: clamp(42px, 6vw, 65px);
+  font-size: 50px;
   font-weight: 800;
+  line-height: 1;
+  margin-bottom: 10px;
   color: #ffffff;
-  text-shadow: 0 0 25px rgba(103, 232, 249, 0.5);
 }
 
 .time-box p {
-  margin-top: 8px;
-  color: #94a3b8;
-  font-size: 14px;
+  margin: 0;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.65);
   text-transform: uppercase;
 }
 
